@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件</title>
+</head>
+<body>
+     <center><form  action="/user/insert"  method="post" enctype="multipart/form-data">
+         <!--<input type="text" placeholder="请输入文件名"><br>-->
+
+        <p>性别<input type="checkbox" name="user_sex" value="M" >M</p><br/>
+        <p><input type="checkbox" name="user_sex"  value="F"  >F</p><br/>
+         <p>头像<input type="file" name="user_head"></p><br/>
+         <p><input type="submit" value="提交"></p>
+     </form></center>
+     <br>
+     <center>
+         <form action="/upload" method="post" enctype="multipart/form-data">
+             <p>上传文件<input type="file" name="file"></p>
+             <p><input type="submit" value="提交"></p>
+         </form>
+     </center>
+
+     <div>
+         <img src="http://niu-test1.oss-cn-beijing.aliyuncs.com/image/2020-02-09/218a4bfea97048229b95961a8ef750fa-222.jpg?Expires=1896615956&OSSAccessKeyId=LTAI4FucJBZx3ztzCDTcARWs&Signature=%2FgaPYx73sSJiNeuuVy5snzrrMAU%3D">
+     </div>
+
+<a href="/download">点</a>
+</body>
+</html>

@@ -4,13 +4,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-@Configuration
+///@Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         //super.addViewControllers(registry);
         //浏览器发送@硅谷请求来到请求页面
-        registry.addViewController("/atguigu").setViewName("login");
+        registry.addViewController("/").setViewName("index");
     }
 //    //不用写controller写个空方法再去跳转页面
 //    @Bean

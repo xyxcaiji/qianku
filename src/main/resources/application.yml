@@ -1,23 +1,10 @@
 spring:
   datasource:
     username: root
-    password: 123456
-    url: jdbc:mysql://39.105.68.212:3306/pinxixi?useSSL=true&serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
+    password: mysql
+    url: jdbc:mysql://localhost:3306/yl?useSSL=true&serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF8
     driver-class-name: com.mysql.jdbc.Driver
-  redis:
-    host: 39.105.68.212
-  http:
-    multipart:
-      max-request-size: 10mb
-      max-file-size: 10mb
 #开启驼峰命名规则
 mybatis:
   configuration:
     map-underscore-to-camel-case: false
-##阿里图片服务器配置
-#ali-oss:
-#  endpoint: http://oss-cn-beijing.aliyuncs.com
-#  bucketName: niu-test1
-#  accessKeyId: LTAI4FucJBZx3ztzCDTcARWs
-#  accessKeySecret: UI1FkQNm4fqzwL4QybhGWn3hsdio3H
-#  dir: image

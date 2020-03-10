@@ -1,18 +1,23 @@
 package com.springboot.bootcache.mapper;
 
+import com.springboot.bootcache.bean.Old_Nur;
 import com.springboot.bootcache.bean.User;
-import org.apache.ibatis.annotations.*;
-import org.springframework.data.annotation.Id;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 @Mapper
 public interface UserMapper {
+    @Select("select * from user")
+    public ArrayList<User> selectAll();
 
-    @Select("select * from user where user_id=#{user_id}")
-    public User getUserById(Integer user_id);
-//    @Update("upadte user set user_head=#{user_head} whrer user_id=#{user_id}")
-//    public void update(User user);
-    //标记自增主键为什么，增加数据后会自动返回主键的值
-    @Options(useGeneratedKeys = true,keyProperty = "user_id")
-    @Insert("insert into user(user_sex,user_head) values(#{user_sex},#{user_head})")
+    @Select("select * from user where user_name=#{user_name}")
+    public User selectByname(String user_name);
+
+    @Insert("insert into user(user_name,user_password,user_email,user_phone,user_birth,user_sex) values(#{user_name},#{user_password},#{user_email},#{user_phone},#{user_birth},#{user_sex})")
     public void insert(User user);
+
 }

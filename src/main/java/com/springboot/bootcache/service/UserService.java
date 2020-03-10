@@ -3,30 +3,32 @@ package com.springboot.bootcache.service;
 import com.springboot.bootcache.bean.User;
 import com.springboot.bootcache.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-@CacheConfig(cacheNames = "user")
+import java.util.ArrayList;
+
 @Service
 public class UserService {
+
     @Autowired
     UserMapper userMapper;
 
-    @Cacheable(key = "#user_id")
-    public User getByid(Integer user_id)
+    public ArrayList<User>  selectAll()
     {
-        User userById = userMapper.getUserById(user_id);
-        System.out.println("service"+userById);
-        return userById;
+        ArrayList<User> users = userMapper.selectAll();
+        return users;
+    }
+    //通过username查询对应的user
+    public User selectByname(String user_name)
+    {
+        User user1 = userMapper.selectByname(user_name);
+       // System.out.println("select"+user.toString());
+        return user1;
     }
 
-
-    public void insrt(User user)
+    public void insert(User user)
     {
         userMapper.insert(user);
-        System.out.println("添加的信息"+user.toString());
+        System.out.println("service"+user.toString());
     }
-
-
 }

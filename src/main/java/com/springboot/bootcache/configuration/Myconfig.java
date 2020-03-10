@@ -10,8 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
-
-@Configuration
+//
+//@Configuration
 public class Myconfig {
 
     @Bean("myKeyGenerator")
@@ -25,11 +25,12 @@ public class Myconfig {
             }
         };
     }
-   // @Bean
+    @Bean
     public FilterRegistrationBean myFilterRegistrationBean()
     {
         FilterRegistrationBean filter=new FilterRegistrationBean();
         filter.setFilter(new MyFilter());
+
         filter.addUrlPatterns("/*");
    //     String error="login.html";
 

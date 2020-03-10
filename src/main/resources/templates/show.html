@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body{
+            padding: 20px;
+            height:600px;
+
+        }
+        .top{
+            height:50px;
+            background-color:#EE9CA7;
+            font-size: 24px;
+            line-height: 50px;
+            color:white;
+            padding-left:20px ;
+
+        }
+        .content{
+            display: flex;
+            justify-content: space-between;
+            overflow: auto;
+
+        }
+        .left{
+            width:17%;
+            height:560px;
+            background-color:#a7bfe8;
+            color:black;
+            overflow: auto;
+
+        }
+        .span1{
+            height:45px;
+            line-height: 45px;
+            padding-left: 10px;
+            font-size: 18px;
+        }
+        .drop{
+            border:none;
+            position: relative;
+            padding-left: 15px;
+            width:100%;
+            height:40px;
+            text-align:left;
+            background-color:#a7bfe8;
+        }
+        .drop:hover{
+            background-color:#6190e8;
+        }
+        .drop span{
+            float:right;
+            margin-right:5px;
+        }
+        .menu{
+            display: none;
+            list-style: none;
+            margin:0;
+        }
+        .menu>li{
+            width:100%;
+            height:40px;
+            line-height: 40px;
+            padding-left:25px;
+        }
+        .menu>li:hover{
+            background-color:#6190e8;
+        }
+        .right{
+            width:83%;
+            height:550px;
+            overflow: auto;
+            padding-left: 30px;
+        }
+        li{
+            list-style: none;
+        }
+        .box1{
+            display: none;
+            padding:15px 0 0 0px;
+            width:100%;
+            overflow: auto;
+            display:none;
+        }
+        .info ul,.WriteInfo ul,.oldInsert ul,.oldWrite ul,.oldDelete ul,.nurseInsert ul,.nurseDelete ul,.nurseWrite ul{
+            width:700px;
+            margin: 50px auto;
+            font-size: 20px;
+            /* background-color: #6190e8; */
+        }
+        .info ul li,.WriteInfo ul li,.oldInsert ul li,.oldWrite ul li,.oldDelete ul li,.nurseInsert ul li,.nurseDelete ul li,.nurseWrite ul li{
+            min-height:37px;
+            line-height: 37px;
+            margin: 15px;
+        }
+        .info ul li span,.oldDelete ul li span,.nurseDelete ul li span{
+            display: inline-block;
+            padding-left:5px;
+            width:250px;
+            min-height:37px;
+            border-radius: 10px;
+            border:1px solid#EE9CA7 ;
+            vertical-align: middle;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        .WriteInfo button,.preserve{
+            width:100px;
+            height:40px;
+            font-size: 20px;
+            background-color: rgb(71, 185, 71);
+            margin-left: 750px;
+            border-radius: 10px;
+            border: none;
+        }
+        .WriteInfo ul li input,.oldInsert ul li input,.oldWrite ul li input,.nurseWrite ul li input,.nurseInsert ul li input{
+            padding-left:7px;
+            width:207px;
+            height:37px;
+            line-height: 37px;
+            border-radius: 10px;
+            border:1px solid#EE9CA7 ;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        .smallTitle{
+            display: inline;
+            font-size: 30px;
+        }
+        .allShow{
+            margin-left: 100px;
+            width:80px;
+            height:30px;
+        }
+        .find{
+            display: inline-block;
+            margin-left: 100px;
+        }
+        .find input{
+            width:200px;
+            height:30px;
+        }
+        .find button{
+            width:50px;
+            height:25px;
+            margin-left: 30px;
+        }
+        table{
+            margin: 10px 0;
+        }
+        td,th{
+            min-width:80px;
+            height:40px;
+            text-align: center;
+            border: 1px solid black;
+            overflow: auto;
+        }
+        #table2 td,#table2 th{
+            min-width:100px;
+        }
+        .box{
+            width:80%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+        h3{
+            text-indent: 2em;
+        }
+        #man,#woman{
+            width:15px;
+            height:15px;
+            margin-left: 30px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="top">欢迎来到智慧养老管理系统！</div>
+<div class="content">
+    <div class="left">
+        <span class="glyphicon glyphicon-align-justify span1"> 功能导航</span>
+
+        <button class="drop">管理者
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+        <ul class="menu">
+            <li>显示管理者信息</li>
+            <li>编辑管理者信息</li>
+        </ul>
+
+        <button class="drop">老人信息管理
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+        <ul class="menu">
+            <li>增加信息</li>
+            <li>修改信息</li>
+            <li>删除信息</li>
+            <li>查询信息</li>
+        </ul>
+
+        <button class="drop">护工信息管理
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+        <ul class="menu">
+            <li>增加信息</li>
+            <li>修改信息</li>
+            <li>删除信息</li>
+            <li>查询信息</li>
+        </ul>
+    </div>
+
+    <div class="right">
+
+        <div class="info box1">
+            <h2>显示管理者信息:</h2>
+            <ul>
+                <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<span class="sp1"></span></li>
+                <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<span class="sp1"></span></li>
+                <li>出生日期:<span class="sp1"></span></li>
+                <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:<span class="sp1"></span></li>
+                <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:<span class="sp1"></span></li>
+            </ul>
+        </div>
+
+        <div class="WriteInfo box1">
+            <h2>编辑管理者信息:</h2>
+            <form action="/updateUser" target="iframe_display">
+                <ul>
+                    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<input type="text" required class="in1" name="user_name"></li>
+                    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input id="man" type="radio" name="user_sex" value="M"/>男<input id="woman" type="radio" value="F" name="user_sex" />女</li>
+                    <li>出生日期: <input type="date" class="in1" required name="user_birth"></li>
+                    <li>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:<input type="text" required class="in1" name="user_email"></li>
+                    <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:<input type="text" required class="in1" name="user_phone"></li>
+                </ul>
+                <button type="submit">保存</button>
+            </form>
+        </div>
+
+        <div class="oldShow box1">
+            <h2 class="smallTitle">查询老人信息: </h2>   <button class="allShow" id="oldAllshow">查看全部</button>
+            <div class="find">
+                <input type="text" placeholder="请输入要查询的姓名" id="xianshi">
+                <button id="singeOld">查 询</button>
+            </div>
+            <table id="table1">
+                <tr>
+                    <th>编号（ID）</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>出生日期</th>
+                    <th>家庭住址</th>
+                    <th>子女姓名</th>
+                    <th>子女电话</th>
+                    <th>房间编号</th>
+                    <th>护工编号</th>
+                    <th>入住时间</th>
+                    <th>护工姓名</th>
+                </tr>
+
+
+            </table>
+        </div>
+
+        <div class="oldInsert box1">
+            <h2 class="smallTitle">添加老人信息:</h2>
+            <form action="insertOld" target="iframe_display">
+                <ul>
+                    <!-- <li>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<input type="text" required name="id"></li> -->
+                    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<input type="text" required name="old_name"></li>
+                    <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:<input type="number" required name="old_age"></li>
+                    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input id="man" type="radio" name="old_sex" value="M"/>男<input id="woman" type="radio" name="old_sex"  value="F"/>女</li>
+                    <li>出生日期:<input type="date" required name="old_birthday"></li>
+                    <li>家庭住址:<input type="text" required name="old_homeaddress"></li>
+                    <li>子女姓名:<input type="text" required name="old_son"></li>
+                    <li>子女电话:<input type="text" required name="old_sonphone"></li>
+                    <li>房间编号:<input type="number" required name="old_homeport"></li>
+                    <li>护工编号:<input type="number" required name="old_nurseid"></li>
+                    <li>入住时间:<input type="date" required name="old_joindate"></li>
+                </ul>
+                <button type="submit" class="preserve">添加</button>
+            </form>
+        </div>
+
+        <div class="oldWrite box1">
+            <h2 class="smallTitle">修改老人信息:</h2>
+            <div class="find">
+                <input type="text" placeholder="请输入要修改的姓名" id="xiugai">
+                <button type="submit" id="chaxun1">查询</button>
+            </div>
+
+            <form action="/updateOld" target="iframe_display">
+                <ul>
+                    <li>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<input type="number" required name="id" class="in2"></li>
+                    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<input type="text" required name="old_name" class="in2"></li>
+                    <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:<input type="number" required name="old_age" class="in2"></li>
+                    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input id="man" type="radio" name="old_sex" value="M"/ >男<input id="woman" type="radio" name="old_sex"  value="F"/>女</li>
+                    <li>出生日期:<input type="date" required name="old_birthday" class="in2"></li>
+                    <li>家庭住址:<input type="text" required name="old_homeaddress" class="in2"></li>
+                    <li>子女姓名:<input type="text" required name="old_son" class="in2"></li>
+                    <li>子女电话:<input type="text" required name="old_sonphone" class="in2"></li>
+                    <li>房间编号:<input type="number" required name="old_homeport" class="in2"></li>
+                    <li>护工编号:<input type="number" required name="old_nurseid" class="in2"></li>
+                    <li>入住时间:<input type="date" required name="old_joindate" class="in2"></li>
+                </ul>
+                <button type="submit" class="preserve">保存修改</button>
+            </form>
+        </div>
+
+        <div class="oldDelete box1">
+            <h2 class="smallTitle">删除老人信息:</h2>
+            <div class="find">
+                <input type="text" placeholder="请输入要删除的姓名" id="shanchu">
+                <button id="chaxun2">查询</button>
+            </div>
+            <ul>
+                <li>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<span class="sp2" id="sp2"></span></li>
+                <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<span class="sp2"></span></li>
+                <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:<span class="sp2"></span></li>
+                <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<span class="sp2"></span></li>
+                <li>出生日期:<span  class="sp2"></span></li>
+                <li>家庭住址:<span  class="sp2"></span></li>
+                <li>子女姓名:<span class="sp2"></span></li>
+                <li>子女电话:<span class="sp2"></span></li>
+                <li>房间编号:<span class="sp2"></span></li>
+                <li>护工编号:<span class="sp2"></span></li>
+                <li>入住时间:<span class="sp2"></span></li>
+            </ul>
+            <button id="oldshanchu" class="preserve">删除</button>
+        </div>
+
+        <div class="nurseShow box1">
+            <h2 class="smallTitle">查询护工信息: </h2>   <button class="allShow" id="nurseAllshow">查看全部</button>
+            <div class="find">
+                <input type="text" placeholder="请输入要查询的姓名" id="xianshi1">
+                <button id="singeNurse">查 询</button>
+            </div>
+
+            <table id="table2">
+                <tr>
+                    <th>编号（ID）</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>出生日期</th>
+                    <th>政治面貌</th>
+                    <th>入职时间</th>
+                    <th>等级证书</th>
+                    <th>工作经验</th>
+                    <th>年龄</th>
+                    <th>电话</th>
+                </tr>
+            </table>
+        </div>
+        <iframe id="iframe_display" name="iframe_display" style="display: none;"></iframe>
+        <div class="nurseInsert box1">
+            <h2 class="smallTitle">添加护工信息:</h2>
+            <form action="/insertNurse" target="iframe_display"  onsubmit="alert('成功')">
+                <ul>
+                    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<input type="text" required name="nurse_name"></li>
+                    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input id="man" type="checkbox" name="nurse_sex" value="M"/>男<input id="woman" type="checkbox"  name="nurse_sex" value="F"/>女</li>
+                    <li>出生日期:<input type="date" required name="nurse_birthday"></li>
+                    <li>政治面貌:<input type="text" required name="nurse_politic"></li>
+                    <li>入职时间:<input type="date" required name="nurse_joindate"></li>
+                    <li>工作经验:<input type="text" required name="nurse_working"></li>
+                    <li>等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:<input type="number" required name="nurse_grada"></li>
+                    <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:<input type="number" required name="nurse_age"></li>
+                    <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:<input type="text" required name="nurse_phone"></li>
+                </ul>
+                <button type="submit" class="preserve">添加</button>
+            </form>
+        </div>
+
+        <div class="nurseWrite box1">
+            <h2 class="smallTitle">修改护工信息:</h2>
+            <div class="find">
+                <input type="text" placeholder="请输入要修改的姓名" id="xiugai1">
+                <button id="chaxun3">查询</button>
+            </div>
+
+            <form action="/updateNurse" target="iframe_display">
+                <ul>"
+                    <li>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<input type="number" class="in4" name="id"/li>
+                    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<input type="text" required class="in4" name="nurse_name"></li>
+                    <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<input id="man" type="radio" name="nurse_sex" value="M"/>男<input id="woman" type="radio"  name="nurse_sex" value="F"/>女</li>
+                    <li>出生日期:<input type="date" required class="in4" name="nurse_birthday"></li>
+                    <li>政治面貌:<input type="text" required class="in4" name="nurse_politic"></li>
+                    <li>入职时间:<input type="date" required class="in4" name="nurse_joindate"></li>
+                    <li>工作经验:<input type="text" required class="in4" name="nurse_working"></li>
+                    <li>等&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:<input type="number" required class="in4" name="nurse_grada"></li>
+                    <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:<input type="number" required class="in4" name="nurse_age"></li>
+                    <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:<input type="text" required name="nurse_phone" class="in4"></li>
+                </ul>
+                <button type="submit" class="preserve">保存修改</button>
+            </form>
+        </div>
+
+        <div class="nurseDelete box1">
+            <h2 class="smallTitle">删除护工信息:</h2>
+            <div class="find">
+                <input type="text" placeholder="请输入要删除的姓名" id="shanchu1">
+                <button id="chaxun4">查询</button>
+            </div>
+            <ul>
+                <li>编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<span class="sp3" id="sp3"></span></li>
+                <li>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:<span  class="sp3"></span></li>
+                <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<span  class="sp3"></span></li>
+                <li>出生日期:<span  class="sp3"></span></li>
+                <li>政治面貌:<span  class="sp3"></span></li>
+                <li>入职时间:<span  class="sp3"></span></li>
+                <li>工作经验:<span  class="sp3"></span></li>
+                <li>等级证书:<span  class="sp3"></span></li>
+                <li>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:<span  class="sp3"></span></li>
+                <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话:<span  class="sp3"></span></li>
+
+            </ul>
+            <button id="nurseshanchu" class="preserve">删除</button>
+        </div>
+        <div class="box">
+            <h3>欢迎来到智慧养老管理系统！本系统的主要功能是管理员对老人和护工的信息进行增删改查，欢迎使用本系统，祝您使用愉快！</h3>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(()=>{
+        $("#nurseAllshow").click(()=>{
+        $("#table2").html("<tr><th>编号（ID）</th><th>姓名</th><th>性别</th><th>出生日期</th><th>政治面貌</th><th>入职时间</th><th>等级证书</th><th>工作经验</th><th>年龄</th><th>电话</th></tr>");
+    $.ajax({
+        url:"/nurseSelectAll",
+        success:function(arr){
+            for(var i=0;i<arr.length;i++){
+                var tr1=document.createElement("tr");  // 以 DOM 创建新元素
+                for(var prop in arr[i]){
+                    var td1=document.createElement("td");
+                    td1.innerHTML=arr[i][prop];
+                    tr1.append(td1);
+                }
+                $("#table2").append(tr1);
+            }
+        }
+    })
+
+    });
+    $("#singeNurse").click(()=>{
+        $("#table2").html("<tr><th>编号（ID）</th><th>姓名</th><th>性别</th><th>出生日期</th><th>政治面貌</th><th>入职时间</th><th>等级证书</th><th>工作经验</th><th>年龄</th><th>电话</th></tr>");
+    $.ajax({
+        url:"/selectNurseByName",
+        data:{"nurse_name":$("#xianshi1").val()},
+        success:function(data){
+            var tr1=document.createElement("tr");  // 以 DOM 创建新元素
+            for(var prop in data){
+                var td1=document.createElement("td");
+                td1.innerHTML=data[prop];
+                tr1.append(td1);
+            }
+            $("#table2").append(tr1);
+
+        }
+    });
+    })
+    $("#singeOld").click(()=>{
+        $("#table1").html("<tr><th>编号（ID）</th><th>姓名</th><th>年龄</th><th>性别</th><th>出生日期</th><th>家庭住址</th><th>子女姓名</th><th>子女电话</th><th>房间编号</th><th>护工编号</th><th>入住时间</th><th>护工姓名</th></tr>");
+    $.ajax({
+        url:"/selectOldByname",
+        data:{"old_name":$("#xianshi").val()},
+        success:function(data){
+            var tr1=document.createElement("tr");  // 以 DOM 创建新元素
+            for(var prop in data){
+                var td1=document.createElement("td");
+                td1.innerHTML=data[prop];
+                tr1.append(td1);
+            }
+            $("#table1").append(tr1);
+
+        }
+    });
+    });
+    $("#oldAllshow").click(()=>{
+        $("#table1").html("<tr><th>编号（ID）</th><th>姓名</th><th>年龄</th><th>性别</th><th>出生日期</th><th>家庭住址</th><th>子女姓名</th><th>子女电话</th><th>房间编号</th><th>护工编号</th><th>入住时间</th><th>护工姓名</th></tr>");
+    $.ajax({
+        url:"/selectOldAll",
+        success:function(arr){
+            for(var i=0;i<arr.length;i++){
+                var tr1=document.createElement("tr");  // 以 DOM 创建新元素
+                for(var prop in arr[i]){
+                    var td1=document.createElement("td");
+                    td1.innerHTML=arr[i][prop];
+                    tr1.append(td1);
+                }
+                $("#table1").append(tr1);
+            }
+        }
+    })
+
+    });
+    $("#man").click(()=>{
+        $("#man").attr("checked","checked");
+    $("#woman").removeAttr("checked");
+    });
+    $("#woman").click(()=>{
+        $("#woman").attr("checked","checked");
+    $("#man").removeAttr("checked");
+    });
+    $('.drop').each(function(){
+        $(this).click(function(){
+            $($(this).next()).slideToggle();
+            $(this).find("span").toggleClass("glyphicon glyphicon-chevron-down").toggleClass("glyphicon glyphicon-chevron-up");
+
+        });
+    });
+    $(".left ul li:first").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".info").fadeToggle();$("input").val("");
+    $.ajax({
+        url:"selectUser",
+        success:function(result){
+            $(".sp1").eq(0).text(result.user_name);
+            if(result.user_sex=="M"){
+                $(".sp1").eq(1).text("男") ;
+            }
+            else{
+                $(".sp1").eq(1).text("女");
+            }
+            $(".sp1").eq(2).text(result.user_birth)
+            $(".sp1").eq(3).text(result.user_email)
+            $(".sp1").eq(4).text(result.user_phone)
+        }
+
+    })
+    });
+    $(".left ul li:eq(1)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".WriteInfo").fadeToggle();$("input").val("");
+    $.ajax({
+        url:"selectUser",
+        success:function(result){
+            console.log(result.user_phone);
+            $(".in1").eq(0).val(result.user_name);
+            if(result.user_sex=="M"){
+                $("#man").attr("checked","checked");
+            }
+            else{
+                $("#woman").attr("checked","checked");
+            }
+            $(".in1").eq(1).val(result.user_birth);
+            $(".in1").eq(2).val(result.user_email);
+            $(".in1").eq(3).val(result.user_phone);
+        }
+
+    })
+    });
+    $(".left ul li:eq(2)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".oldInsert").fadeToggle();$("input").val("");
+    });
+    $(".left ul li:eq(3)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".oldWrite").fadeToggle();$("input").val("");
+    $("#chaxun1").click(()=>{
+        $.ajax({
+        url:"/selectByoldname",
+        data:{"old_name":$("#xiugai").val()},
+        dataType:"json",
+        success:function(result){
+            $(".in2").eq(0).val(result.id);
+            $(".in2").eq(1).val(result.old_name);
+            $(".in2").eq(2).val(result.old_age);
+            if(result.old_sex=="M"){
+                $("#man").attr("checked","checked");
+            }
+            else{
+                $("#woman").attr("checked","checked");
+            }
+            $(".in2").eq(3).val(result.old_birthday);
+            $(".in2").eq(4).val(result.old_homeaddress);
+            $(".in2").eq(5).val(result.old_son);
+            $(".in2").eq(6).val(result.old_sonphone);
+            $(".in2").eq(7).val(result.old_homeport);
+            $(".in2").eq(8).val(result.old_nurseid);
+            $(".in2").eq(9).val(result.joindate);
+
+
+
+        }
+    })
+    })
+    });
+    $(".left ul li:eq(4)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".oldDelete").fadeToggle();$("input").val("");
+    $("#chaxun2").click(()=>{
+        $.ajax({
+        url:"/selectByoldname",
+        data:{"old_name":$("#shanchu").val()},
+        dataType:"json",
+        success:function(result){
+            $(".sp2").eq(0).text(result.id);
+            $(".sp2").eq(1).text(result.old_name);
+            $(".sp2").eq(2).text(result.old_age);
+            if(result.user_sex=="M"){
+                $(".sp2").eq(3).text("男") ;
+            }
+            else{
+                $(".sp2").eq(3).text("女");
+            }
+            $(".sp2").eq(4).text(result.old_birthday);
+            $(".sp2").eq(5).text(result.old_homeaddress);
+            $(".sp2").eq(6).text(result.old_son);
+            $(".sp2").eq(7).text(result.old_sonphone);
+            $(".sp2").eq(8).text(result.old_homeport);
+            $(".sp2").eq(9).text(result.old_nurseid);
+            $(".sp2").eq(10).text(result.joindate);
+
+
+
+        }
+    });
+    })
+
+    });
+    $("#oldshanchu").click(()=>{
+        $.ajax({
+        url:"/deleteOldByname",
+        data:{id:$("#sp2").text()},
+        success:function(){
+            alert("删除成功！")
+        }
+    })
+    })
+    //护工删除
+    $("#nurseshanchu").click(()=>{
+        $.ajax({
+        url:"/deleteNurseById",
+        data:{id:$("#sp3").text()},
+        success:function(){
+            alert("删除成功！")
+        }
+    })
+    })
+    $(".left ul li:eq(5)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".oldShow").fadeToggle();$("input").val("");
+
+    });
+    $(".left ul li:eq(6)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".nurseInsert").fadeToggle();
+    $("input").val("");$("input").val("");
+    })
+    $(".left ul li:eq(7)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".nurseWrite").fadeToggle();$("input").val("");
+    $("#chaxun3").click(()=>{
+        $.ajax({
+        url:"/selectNurseByName",
+        data:{"nurse_name":$("#xiugai1").val()},
+        dataType:"json",
+        success:function(result){
+            $(".in4").eq(0).val(result.id);
+            $(".in4").eq(1).val(result.nurse_name);
+            if(result.nurse_sex=="M"){
+                $("#man").attr("checked","checked");
+            }
+            else{
+                $("#woman").attr("checked","checked");
+            }
+            $(".in4").eq(2).val(result.nurse_birthday);
+            $(".in4").eq(3).val(result.nurse_politic);
+            $(".in4").eq(4).val(result.nurse_joindate);
+            $(".in4").eq(5).val(result.nurse_working);
+            $(".in4").eq(6).val(result.nurse_grada);
+            $(".in4").eq(7).val(result.nurse_age);
+            $(".in4").eq(8).val(result.nurse_phone);
+
+        }
+    })
+    })
+    })
+    $(".left ul li:eq(8)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".nurseDelete").fadeToggle();$("input").val("");
+    $("#chaxun4").click(()=>{
+        $.ajax({
+        url:"/selectNurseByName",
+        data:{"nurse_name":$("#shanchu1").val()},
+        dataType:"json",
+        success:function(result){
+            $(".sp3").eq(0).text(result.id);
+            $(".sp3").eq(1).text(result.nurse_name);
+            if(result.nurse_sex=="M"){
+                $(".sp3").eq(2).text("男") ;
+            }
+            else{
+                $(".sp3").eq(2).text("女");
+            }
+            $(".sp3").eq(3).text(result.nurse_birthday);
+            $(".sp3").eq(4).text(result.nurse_politic);
+            $(".sp3").eq(5).text(result.nurse_joindate);
+            $(".sp3").eq(6).text(result.nurse_working);
+            $(".sp3").eq(7).text(result.nurse_grada);
+            $(".sp3").eq(8).text(result.nurse_age);
+            $(".sp3").eq(9).text(result.nurse_phone);
+        }
+    });
+    })
+
+
+    })
+    $(".left ul li:eq(9)").click(()=>{
+        $(".box").hide();
+    $(".box1").hide();
+    $(".nurseShow").fadeToggle();$("input").val("");
+    })
+    });
+
+
+
+</script>
+</body>
+</html>

@@ -33,4 +33,12 @@ public class UserController {
 
     }
 
+    @ResponseBody
+    @GetMapping("/updateUser")
+    public String updateUser(User user)
+    {
+        userService.uodate(user);
+        return "1";
+    }
+
 }

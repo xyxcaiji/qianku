@@ -5,6 +5,7 @@ import com.springboot.bootcache.bean.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -19,5 +20,8 @@ public interface UserMapper {
 
     @Insert("insert into user(user_name,user_password,user_email,user_phone,user_birth,user_sex) values(#{user_name},#{user_password},#{user_email},#{user_phone},#{user_birth},#{user_sex})")
     public void insert(User user);
+
+    @Update("update user set user_name=#{user_name},user_emai=#{user_email},user_sex=#{user_sex},user_phone=#{user_phone},user_birth=#{user_birth}")
+    public void update(User user);
 
 }

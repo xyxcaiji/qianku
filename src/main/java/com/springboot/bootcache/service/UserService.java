@@ -31,4 +31,9 @@ public class UserService {
         userMapper.insert(user);
         System.out.println("service"+user.toString());
     }
+    //更新表单
+    public void uodate(User user)
+    {
+        userMapper.update(user);
+    }
 }
